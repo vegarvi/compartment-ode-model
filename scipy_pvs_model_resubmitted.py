@@ -29,12 +29,12 @@ r_V = 1.69*p_convert
 
 
 r_cap = 125.31*p_convert
-r_CP = 67*p_convert                    # Wild Guess ?
+r_CP = 67*p_convert                   
 r_AG = 10.81*p_convert
 
 
 p_AG = 8.4*133.33
-p_lymph = p_AG                 # Wild guess
+p_lymph = p_AG               
 p_CP = 0*133.33                
 p_cap = 20*133.33
 
