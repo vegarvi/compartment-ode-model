@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<Xdmf Version="3.0">
+  <Domain>
+    <Grid Name="mesh" GridType="Uniform">
+      <Topology NumberOfElements="118846" TopologyType="Triangle" NodesPerElement="3">
+        <DataItem Dimensions="118846 3" NumberType="UInt" Format="HDF">darcy_vel.h5:/Mesh/mesh/topology</DataItem>
+      </Topology>
+      <Geometry GeometryType="XY">
+        <DataItem Dimensions="60118 2" Format="HDF">darcy_vel.h5:/Mesh/mesh/geometry</DataItem>
+      </Geometry>
+      <Attribute Name="f_35" AttributeType="Vector" Center="Node">
+        <DataItem Dimensions="60118 3" Format="HDF">darcy_vel.h5:/VisualisationVector/0</DataItem>
+      </Attribute>
+    </Grid>
+  </Domain>
+</Xdmf>

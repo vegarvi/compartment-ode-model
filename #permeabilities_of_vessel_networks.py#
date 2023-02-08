@@ -1,0 +1,39 @@
+from pylab import *
+
+n = array([2**i for i in list(range(7))+list(range(5,-1,-1))])
+print(n)
+d = array([23.97, 19.17, 15.28, 12.08, 9.46, 7.32, 8, 11.51, 14.53, 17.79, 21.45, 25.70, 30.77])*1e-6
+r = d/2.0
+L = array([1267.6, 930.3, 543.6, 302.3, 161.2, 154.7, 243.9, 473.9, 272.3, 426.6, 632.5, 844.2, 936.3])*1e-6
+
+v = array([8.2, 6.41, 5.05, 4.03, 3.29, 2.75, 2.3, 1.11, 1.4, 1.86, 2.56, 3.57, 4.97])*1e-3 #m/s
+
+deltaP = array([6.93, 5.87, 4.02, 2.7, 1.82, 2.35, 2.62, 1.27, 0.61, 0.89, 1.31, 1.78, 2.01])*133.33
+
+#Should be arteries*1.12, (capillaries + 100 nm), veins*1.13
+r_pvs = zeros(len(n))
+r_pvs[0:6] = r[0:6]*1.12 # faghih
+#r_pvs[5] = r[5] + 100e-9
+r_pvs[6:len(n)] = r[6:len(n)]*1.13
+print(r_pvs)
+
+
+A = 3e-3*3e-3
+
+mu = 7e-4
+
+K = n*pi*r**4/(8*A)
+print('K', K)
+
+R_Q = deltaP/(v*n*pi*r**2)
+print('R_Q', R_Q)
+
+R_K = mu*L/(K*A)
+print('R_K', R_K)
+
+K_pvs = n*pi/(8*A)*(r_pvs**4-r**4 - (r_pvs**2-r**2)**2/log(r_pvs/r))
+print('K_pvs', K_pvs)
+
+R_Kpvs = mu*L/(K_pvs*A)
+print('R_Kpvs', R_Kpvs)
+ 
